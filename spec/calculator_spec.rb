@@ -3,6 +3,7 @@ require 'calculator'
 describe Calculator do
 
   let(:calculator) { Calculator.new }
+  let(:stringy_calc) { Calculator.new(true)}
   
   describe '#add' do
     it "adds two positive integer numbers" do
@@ -90,23 +91,49 @@ describe Calculator do
     it "returns integer for round roots" do
       expect(calculator.sqrt(4)).to be_an(Integer)
     end
- 		
+    
     it "returns two digit decimal for non round roots" do
       expect(calculator.sqrt(5)).to eq(2.24)
     end
   end
 
   describe '#memory=' do
-  	before(:each) { calculator.memory = 4 }
+    before(:each) { calculator.memory = 4 }
 
-  	it "stores an object in memory" do
-  		expect(calculator.memory).to eq(4)
-  	end
+    it "stores an object in memory" do
+      expect(calculator.memory).to eq(4)
+    end
 
-  	it "overwrites any previous object in memory" do
-  		calculator.memory = 6
-  		expect(calculator.memory).to eq(6)
-  	end
+    it "overwrites any previous object in memory" do
+      calculator.memory = 6
+      expect(calculator.memory).to eq(6)
+    end
+  end
+
+  describe "#memory" do
+    it "returns object in memory" do
+      calculator.memory = 4
+      expect(calculator.memory).to eq(4)
+    end
+
+    it "clears memory when it returns an object" do
+      calculator.memory = 4
+      stored_val = calculator.memory
+      expect(calculator.memory).to be_nil
+    end
+
+    it "starts as nil" do
+      expect(calculator.memory).to be_nil
+    end
+  end
+
+  describe "#stringfy" do
+    it "return outputs as strings when set to true" do
+      expect(stringy_calc.add(1,1)).to be_a(String)
+      expect(stringy_calc.subtract(1,1)).to be_a(String)
+      expect(stringy_calc.multiply(2,3)).to be_a(String)
+      expect(stringy_calc.divide(6,2)).to be_a(String)
+    end
   end
 end
 
