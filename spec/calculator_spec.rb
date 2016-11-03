@@ -64,7 +64,7 @@ describe Calculator do
     end
   end
 
-  describe "pow" do
+  describe "#pow" do
     it "raises numbers to their power" do
       expect(calculator.pow(2,2)).to eq(4)
     end
@@ -75,6 +75,24 @@ describe Calculator do
 
     it "raises numbers to a decimal power" do
       expect(calculator.pow(4,0.5)).to eq(2)
+    end
+  end
+
+  describe "#sqrt" do
+    it "determines sqrt for positive number" do
+      expect(calculator.sqrt(4)).to eq(2)
+    end
+
+    it "raises error for negative number" do
+      expect{ calculator.sqrt(-4) }.to raise_error
+    end
+
+    it "returns integer for round roots" do
+      expect(calculator.sqrt(4)).to be_an(Integer)
+    end
+
+    it "returns two digit decimal for non round roots" do
+      expect(calculator.sqrt(5)).to eq(2)
     end
   end
 end
