@@ -70,7 +70,7 @@ describe Calculator do
     end
 
     it "raises numbers to a negative power" do
-      expect{ calculator.pow(2,-2)).to eq(0.25)
+      expect(calculator.pow(2,-2)).to eq(0.25)
     end
 
     it "raises numbers to a decimal power" do
@@ -90,9 +90,41 @@ describe Calculator do
     it "returns integer for round roots" do
       expect(calculator.sqrt(4)).to be_an(Integer)
     end
-
+ 		
     it "returns two digit decimal for non round roots" do
-      expect(calculator.sqrt(5)).to eq(2)
+      expect(calculator.sqrt(5)).to eq(2.24)
     end
   end
+
+  describe '#memory=' do
+  	before(:each) { calculator.memory = 4 }
+
+  	it "stores an object in memory" do
+  		expect(calculator.memory).to eq(4)
+  	end
+
+  	it "overwrites any previous object in memory" do
+  		calculator.memory = 6
+  		expect(calculator.memory).to eq(6)
+  	end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

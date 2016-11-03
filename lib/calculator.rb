@@ -21,18 +21,18 @@ class Calculator
     output((a**b).to_f)
   end
   def sqrt(a)
-    # raise ArgumentError if a < 0
-    # root = a**0.5
-    # root == root.to_i ? output(root.to_i) : output(root.round(2))
+    raise ArgumentError if a < 0
+    root = a**0.5
+    root == root.to_i ? output(root.to_i) : output(root.round(2))
   end
   # returns the item in memory and wipes memory
   def memory
-    # mem = @memory
-    # @memory = nil
-    # return mem
+    mem = @memory
+    @memory = nil
+    return mem
   end
   def memory=(mem)
-    # @memory = mem
+    @memory = mem
   end
   def output(result)
     @stringify ? result.to_s : result
