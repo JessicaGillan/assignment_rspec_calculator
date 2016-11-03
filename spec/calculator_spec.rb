@@ -70,7 +70,7 @@ describe Calculator do
     end
 
     it "raises numbers to a negative power" do
-      expect(calculator.pow(2,-2)).to eq(0.25)
+      expect{ calculator.pow(2,-2)).to eq(0.25)
     end
 
     it "raises numbers to a decimal power" do
